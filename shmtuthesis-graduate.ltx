@@ -1,0 +1,207 @@
+%
+% Email: hellckt@126.com
+% Maintainer: hellckt
+%
+% Copyright (C) 2009-2017 by weijianwen <weijianwen@gmail.com>
+%           (C) 2018-2019 by SJTUG
+%           (C) 2020-2020 by hellckt <hellckt@126.com>
+%
+% This file may be distributed and/or modified under the
+% conditions of the LaTeX Project Public License, either version 1.3c
+% of this license or (at your option) any later version.
+% The latest version of this license is in
+%     https://www.latex-project.org/lppl.txt
+% and version 1.3c or later is part of all distributions of LaTeX
+% version 2005/12/01 or later.
+%
+
+\ProvidesFile{shmtuthesis-graduate.ltx}
+  [2020/01/22 0.0.1 Shanghai Maritime University Thesis Template]
+  
+\ifshmtu@degree@master
+  \shmtu@def@label{degreetypeChi}{硕士}
+  \shmtu@def@label{degreetypeEng}{Master}
+\fi
+
+\shmtu@def@label{degreecategory}{学位类别}
+\shmtu@def@label{thesistitle}{论文题目}
+\shmtu@def@label{major}{学科专业}
+\shmtu@def@label{author}{作者姓名}
+\shmtu@def@label{supervisor}{指导老师}
+\shmtu@def@label{finisheddate}{完成日期}
+\def\shmtu@label@thesistype{}
+\shmtu@def@label{subject}{%
+	\shmtu@label@schoolChi\shmtu@label@degreetypeChi 学位论文
+}
+
+% 纸张设置
+\geometry{%
+  paper      = a4paper,
+  top        = 2.7cm,
+  bottom     = 3.0cm,
+  left       = 3.0cm,
+  right      = 2.5cm,
+  headheight = 1.0cm,
+  headsep    = 0.5cm,
+}
+
+% 设置行距（默认：1.5倍行距）
+\renewcommand{\baselinestretch}{1.5}
+
+% 页眉、页脚设置
+\newcommand{\shmtu@fancyfoot}[2]{
+  \ifshmtu@review\relax\else
+    \ifx#2\@empty\else
+      \zihao{-5}{\bfseries #1}\\{#2}
+    \fi
+  \fi
+}
+\fancypagestyle{shmtu@title}{%
+  \fancyhf{}
+  \renewcommand{\headrulewidth}{0pt}
+  \renewcommand{\footrulewidth}{0pt}
+}
+\fancypagestyle{shmtu@plain}{%
+  \fancyhf{}
+  \fancyhead[L]{~\zihao{-5}\shmtu@label@subject}
+  \fancyhead[R]{\zihao{-5}\shmtu@value@title~}
+  \fancyfoot[C]{\small ~{\thepage}~}
+}
+\renewcommand{\frontmatter}{%
+  \cleardoublepage
+  \@mainmatterfalse
+  \pagenumbering{Roman}
+  \pagestyle{shmtu@plain}
+}
+\renewcommand{\mainmatter}{%
+  \cleardoublepage
+  \@mainmattertrue
+  \shmtu@setfloatfonttrue
+  \pagenumbering{arabic}
+  \pagestyle{shmtu@plain}
+}
+\renewcommand{\backmatter}{%
+  \cleardoublepage
+  \@mainmatterfalse
+}
+
+\renewcommand{\cftchapfont}{\bfseries\heiti}
+\renewcommand{\cftchapleader}{\normalfont\cftdotfill{\cftdotsep}}
+
+% 中文摘要设置
+\NewDocumentEnvironment{abstract}{}{%
+  \cleardoublepage
+  \pdfbookmark[0]{\shmtu@label@abstract}{abstract}
+  \addcontentsline{toc}{chapter}{\shmtu@label@abstractChi}
+  \chapter*{%
+  	% % 摘要标题
+    % \shmtu@value@title \vskip 2ex
+    \begingroup
+      \normalfont\zihao{3}\heiti\shmtu@label@abstractChi
+    \endgroup
+  }
+  \vskip 2ex
+  \@mkboth{\shmtu@label@abstractChi}%
+          {\shmtu@label@abstractChi}%
+  \zihao{-4}
+}{%
+  \vskip 3ex \noindent
+  \begingroup
+    \heiti\shmtu@label@keywordsChi
+  \endgroup
+  \begingroup
+    \shmtu@value@keywords
+  \endgroup
+}
+
+% 英文摘要设置
+\NewDocumentEnvironment{enabstract}{}{%
+  \cleardoublepage
+  \addcontentsline{toc}{chapter}{\texorpdfstring {\MakeUppercase{\shmtu@label@abstractEng}}{\shmtu@label@abstractEng}}
+  \chapter*{%
+  	\bfseries
+    \MakeUppercase\shmtu@value@entitle \vskip 2ex
+    \begingroup
+      \MakeUppercase\shmtu@label@abstractEng
+    \endgroup
+  }
+  \vskip 2ex
+  \@mkboth{\shmtu@label@abstractEng}%
+          {\shmtu@label@abstractEng}%
+  \zihao{-4}
+}{%
+  \noindent\hfill\shmtu@value@enauthor(\shmtu@value@enmajor)
+  \vskip 1ex
+  \noindent\hfill Directed by \shmtu@value@ensupervisor
+  \vskip 6ex \noindent
+  \begingroup
+    \bfseries\MakeUppercase
+    \shmtu@label@keywordsEng
+  \endgroup
+  \begingroup
+    \shmtu@value@enkeywords
+  \endgroup
+}
+\newcommand{\shmtu@bigabstract}[1]{\long\gdef\shmtu@bigabstract@body{#1}}
+\NewDocumentEnvironment{bigabstract}{}{%
+  \Collect@Body\shmtu@bigabstract
+}{%
+  \relax
+}
+
+% 标题页（首页）设置
+\RenewDocumentCommand\maketitle{}{%
+  \pdfbookmark[0]{\shmtu@label@titlepage}{titlepage}
+  \shmtu@maketitle%
+}
+\newcommand{\shmtu@maketitle}{%
+  \cleardoublepage
+  \thispagestyle{shmtu@title}
+  \begin{minipage}{.45\linewidth}
+    \begin{flushleft}
+      \includegraphics[width=0.45\textwidth]{images/shmtu-badge}
+    \end{flushleft}
+  \end{minipage}
+  \hfill
+  \begin{minipage}{.45\linewidth}
+    \begin{flushright}
+      \begingroup
+      \linespread{1.2}\selectfont\zihao{4}\kaishu
+      \begin{tabularx}{\textwidth}
+          {>{\begin{CJKfilltwosides}[t]{4\ccwd}}r<{\end{CJKfilltwosides}：}
+	          >{\raggedright\arraybackslash}X}
+	    学校代码 & 10254				  \\
+      	学号     & \shmtu@value@studentid \\
+      	密级     &						  \\
+	  \end{tabularx}
+	  \endgroup
+    \end{flushright} 
+  \end{minipage}
+  \begin{center}
+    \vspace*{60bp}
+    \includegraphics[height=48bp]{images/shmtu-name}
+    \vskip \stretch{0.4}
+    {\zihao{2}SHANGHAI MARITIME UNIVERSITY}
+    \vskip \stretch{0.4}
+    {\zihao{1}\ziju{0.65}\bfseries\lishu \shmtu@label@degreetypeChi 学位论文}
+    \vskip \stretch{0.4}
+    {\zihao{-2}\MakeUppercase{\shmtu@label@degreetypeEng}'S THESIS}
+    \vskip \stretch{5}
+    
+    \begingroup
+      \makebox[0.85\textwidth][c]{
+      	\linespread{1.2}\selectfont\zihao{2}\bfseries\kaishu
+	    \begin{tabularx}{0.85\textwidth}
+          {r<{：}>{\centering\arraybackslash}X}
+	      \shmtu@label@degreecategory & \shmtu@value@degreecategory \\ \cline{2-2}
+	      \shmtu@label@thesistitle	  & \shmtu@value@title 	      \\ \cline{2-2}
+	      \shmtu@label@major          & \shmtu@value@major   		  \\ \cline{2-2}
+    	  \shmtu@label@author         & \shmtu@value@author         \\ \cline{2-2}
+	      \shmtu@label@supervisor     & \shmtu@value@supervisor     \\ \cline{2-2}
+    	  \shmtu@label@finisheddate   & \shmtu@value@finisheddate   \\ \cline{2-2}
+	    \end{tabularx}
+      }
+    \endgroup
+  \end{center}
+  \cleardoublepage
+}
