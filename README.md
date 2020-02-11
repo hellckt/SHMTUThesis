@@ -17,6 +17,8 @@
 
 目前仅在macOS中编译运行过，理论上各个系统都能兼容，但在其他系统中可能需要进行调整。编译设置主要是将排版引擎（Typeset Engine）设置为`XeLaTeX`；文献引擎（Bibliography Engine）设置为`Biber`。设置完毕后进行编译即可得到PDF文件。
 
+注意：如果编译过程中出现XITS、LISU和YOUYUAN字体缺失错误，请在本项目的`fonts`目录中安装字体。
+
 #### macOS用户
 
 推荐下载[texpad](https://www.texpad.com/)、[texlive](https://www.tug.org/texlive/)或其他类型的LaTeX编辑器使用，也可以下载安装好LaTeX相关环境后，使用项目中提供的`compile.sh`脚本进行编译。
@@ -29,7 +31,48 @@
 4. 再点击`Bibliographies`设置`Bibliography Engine`为`Biber`；
 5. 最后点击编译按钮即可。
 
-注意：由于macOS的字体库中缺少隶书与幼园字体，请在本项目的`fonts`目录中安装字体。
+#### Linux用户
+
+**命令行运行**
+
+1. 在``SHMTUThesis``目录下运行``./compile.sh run``，等待论文生成即可。
+
+注意：需要安装``latexmk``，``sudo apt-get install latexmk``。
+
+**VSCode**
+
+如果使用VSCode编辑器（安装了``Latex WorkShop``插件）：
+1. 打开设置：点击左上角``File``，点击``Preferences -> Settings``；
+2. 输入``latex``，点击``Edit in setting.json``；
+3. 在``latex-workshop.latex.tools``和``latex-workshop.latex.recipes``下配置``biber``：
+``` json
+"latex-workshop.latex.tools": [
+  {
+    "name": "biber",
+    "command": "biber",
+    "args": [
+      "%DOCFILE%"
+    ]
+  }
+]
+```
+``` json
+"latex-workshop.latex.recipes": [
+  {
+    "name": "xe->bib->xe->xe",
+    "tools": [
+      "xelatex",
+      "biber",
+      "xelatex",
+      "xelatex"
+    ]
+  }
+]
+```
+4. 修改完配置后，在编辑器内打开``main.tex``；
+5. 点击左边的``TEX``按钮，选择``Build LaTex Project``，再点击``Recipe: xe->bib->xe->xe``即可。
+
+注意：需要安装``biber``，``sudo apt-get install biber``。
 
 ## 致谢
 
