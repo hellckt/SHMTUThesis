@@ -6,7 +6,9 @@
 THESIS='main'
 THESISTEX=$THESIS.tex
 THESISPDF=$THESIS.pdf
-TEMP='.temp'
+# 在Ubuntu系统下，使用隐藏文件夹.temp，在编译的时候会出现main.aux无法写入的错误
+# 由于编译完成后临时文件夹会删除，因此将.temp变更temp
+TEMP='temp'
 
 echo $THESISTEX
 
