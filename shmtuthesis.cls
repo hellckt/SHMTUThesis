@@ -253,7 +253,7 @@
       StylisticSet = 8
     ]
     \setmathfont{XITSMath-Regular.otf}[range={cal,bfcal},StylisticSet=1]
-    \else
+  \else
     \setmathfont{xits-math}[
       Extension    = .otf,
       BoldFont     = *bold,
