@@ -6,11 +6,11 @@
 
 ## 项目介绍
 
-​		本项目模板文档是由LaTeX 语法编写，模板的主要内容是关于上海海事大学信息工程学院（SHMTU—CIE）硕士研究生毕业论文的基本框架。模板里包含了排版中常用的例子，包括公式、表格、算法、参考文献等。 用户可以参考或者直接基于此示例文档撰写论文。模板预览效果参看`main.pdf`。
+&emsp; &emsp; 本项目模板文档是由LaTeX 语法编写，模板的主要内容是关于上海海事大学信息工程学院（SHMTU—CIE）硕士研究生毕业论文的基本框架。模板里包含了排版中常用的例子，包括公式、表格、算法、参考文献等。 用户可以参考或者直接基于此示例文档撰写论文。模板预览效果参看`main.pdf`。
 
 ## 环境依赖
 
-​		本模板仅支持XeTeX引擎——XeLaTeX，字符编码仅支持UTF-8。
+&emsp;&emsp; 本模板仅支持XeTeX引擎——XeLaTeX，字符编码仅支持UTF-8。
 
 ## 使用方法
 
@@ -20,12 +20,11 @@
 >
 > 设置完毕后进行编译即可得到PDF文件。
 
-注意：如果编译过程中出现XITS、LISU和YOUYUAN字体缺失错误，请在本项目的`fonts`目录中安装字体。
+&emsp;&emsp; 注意：如果编译过程中出现XITS、LISU和YOUYUAN字体缺失错误，请在本项目的`fonts`目录中安装字体。
 
 * #### macOS用户
 
-  推荐下载[texpad](https://www.texpad.com/)、[texlive](https://www.tug.org/texlive/)或其他类型的LaTeX编辑器使用，也可以下载安装好LaTeX相关环境后，使用项目中提供的`compile.sh`脚本进行编译。
-  以texpad编辑器为例：
+  &emsp;&emsp; 推荐下载[texpad](https://www.texpad.com/)、[texlive](https://www.tug.org/texlive/)或其他类型的LaTeX编辑器使用，也可以下载安装好LaTeX相关环境后，使用项目中提供的`compile.sh`脚本进行编译。以texpad编辑器为例：
   
   ​	1、首先使用编辑器打开该模版的`main.tex`文件；
   
@@ -36,13 +35,14 @@
   ​	4、再点击`Bibliographies`设置`Bibliography Engine`为`Biber`；
   
   ​	5、最后点击编译按钮即可。
-
+  
 * #### Linux用户
 
   1. **命令行运行**
-	 在``SHMTUThesis``目录下运行``./compile.sh run``，等待论文生成即可。
+
+	&emsp;&emsp;  在``SHMTUThesis``目录下运行``./compile.sh run``，等待论文生成即可。
 	
-	 注意：需要安装``latexmk``，``sudo apt-get install latexmk``。
+	&emsp;&emsp;  注意：需要安装``latexmk``，``sudo apt-get install latexmk``。
 	
 	2. **VSCode**
 	
@@ -92,9 +92,9 @@
 
 ## 自定义模板文档
 
-​		因为实际文本内容主要在`./tex/`文件夹中，故提供此文件的相关描述，其他文件为统一的模板样式。
+&emsp;&emsp; 因为实际文本内容主要在`./tex/`文件夹中，故提供此文件的相关描述，其他文件为统一的模板样式。
 
-​		`main.tex`文件负责将每个部分组合起来形成一个完整的论文架构，所以`main.tex`文件可以调整每个子模块的位置，完成增加、删除、修改等具体操作。
+&emsp;&emsp; `main.tex`文件负责将每个部分组合起来形成一个完整的论文架构，所以`main.tex`文件可以调整每个子模块的位置，完成增加、删除、修改等具体操作。
 
 ```java
 // 目录结构
@@ -120,9 +120,6 @@
         maxwell_equations.tex	// 论文公式范本
 ```
 
-
-
-
 ## 致谢
 
 - 感谢 LaTeX 开源项目组；
@@ -131,9 +128,9 @@
 
 ## 软件许可证
 
-​		本项目中所使用到的上海海事大学校徽、校名图片（`shmtu-badge.jpg` 等）的版权归上海海事大学所有。
+&emsp;&emsp; 本项目中所使用到的上海海事大学校徽、校名图片（`shmtu-badge.jpg` 等）的版权归上海海事大学所有。
 
-​		`shmtuthesis.cls` 文档类与相关附属文件使用 [LPPL](https://www.latex-project.org/lppl.txt) 授权。
+&emsp;&emsp; `shmtuthesis.cls` 文档类与相关附属文件使用 [LPPL](https://www.latex-project.org/lppl.txt) 授权。
 
-​		其他部分使用 [Apache License 2.0](https://github.com/hellckt/SHMTUThesis/blob/master/LICENSE) 授权。
+&emsp;&emsp; 其他部分使用 [Apache License 2.0](https://github.com/hellckt/SHMTUThesis/blob/master/LICENSE) 授权。
 
