@@ -362,9 +362,8 @@
 % 目录
 \renewcommand{\tableofcontents}{%
   \cleardoublepage%
-  \pdfbookmark[0]{\contentsname}{toc}%
-  \addcontentsline{toc}{chapter}{\contentsname}
   \chapter*{\contentsname}%
+  \addcontentsline{toc}{chapter}{\contentsname}
   \@mkboth{\contentsname}{\contentsname}%
   \@starttoc{toc}
 }
@@ -372,9 +371,8 @@
 % 图片索引目录
 \renewcommand{\listoffigures}{%
   \cleardoublepage%
-  \pdfbookmark[0]{\listfigurename}{lof}%
-  \addcontentsline{toc}{chapter}{\listfigurename}
   \chapter*{\listfigurename}%
+  \addcontentsline{toc}{chapter}{\listfigurename}
   \@mkboth{\listfigurename}{\listfigurename}%
   \@starttoc{lof}
 }
@@ -382,9 +380,8 @@
 % 表格索引
 \renewcommand{\listoftables}{%
   \cleardoublepage%
-  \pdfbookmark[0]{\listtablename}{lot}%
-  \addcontentsline{toc}{chapter}{\listtablename}
   \chapter*{\listtablename}%
+  \addcontentsline{toc}{chapter}{\listtablename}
   \@mkboth{\listtablename}{\listtablename}%
   \@starttoc{lot}
 }
@@ -559,9 +556,9 @@
   \else
     \cleardoublepage
     \chapter*{\shmtu@label@acknowledgements}
+    \addcontentsline{toc}{chapter}{\shmtu@label@acknowledgements}%
     \@mkboth{\shmtu@label@acknowledgements}%
             {\shmtu@label@acknowledgements}%
-    \addcontentsline{toc}{chapter}{\shmtu@label@acknowledgements}%
     \shmtu@acknowledgements@body
   \fi
 }
@@ -918,9 +915,8 @@
     \makeatletter
 		\renewcommand{\@dotsep}{\cftdotsep}
 	\makeatother
-    \pdfbookmark[0]{\listalgorithmcfname}{loa}%
-    \addcontentsline{toc}{chapter}{\listalgorithmcfname}
     \chapter*{\listalgorithmcfname}%
+    \addcontentsline{toc}{chapter}{\listalgorithmcfname}
     \@mkboth{\listalgorithmcfname}{\listalgorithmcfname}%
     \@starttoc{loa}
   }
@@ -957,9 +953,8 @@
     \makeatletter
 	\renewcommand{\@dotsep}{\cftdotsep}
 	\makeatother
-    \pdfbookmark[0]{\listalgorithmname}{loa}%
-    \addcontentsline{toc}{chapter}{\listalgorithmname}
     \chapter*{\listalgorithmname}%
+    \addcontentsline{toc}{chapter}{\listalgorithmname}
     \@mkboth{\listalgorithmname}{\listalgorithmname}%
     \@starttoc{loa}
   }

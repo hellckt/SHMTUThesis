@@ -91,15 +91,12 @@
 % 中文摘要设置
 \NewDocumentEnvironment{abstract}{}{%
   \cleardoublepage
-  \pdfbookmark[0]{\shmtu@label@abstract}{abstract}
-  \addcontentsline{toc}{chapter}{\shmtu@label@abstractChi}
   \chapter*{%
-  	% % 摘要标题
-    % \shmtu@value@title \vskip 2ex
     \begingroup
       \normalfont\zihao{3}\heiti\shmtu@label@abstractChi
     \endgroup
   }
+  \addcontentsline{toc}{chapter}{\shmtu@label@abstractChi}
   \vskip 2ex
   \@mkboth{\shmtu@label@abstractChi}%
           {\shmtu@label@abstractChi}%
@@ -117,7 +114,6 @@
 % 英文摘要设置
 \NewDocumentEnvironment{enabstract}{}{%
   \cleardoublepage
-  \addcontentsline{toc}{chapter}{\texorpdfstring {\MakeUppercase{\shmtu@label@abstractEng}}{\shmtu@label@abstractEng}}
   \chapter*{%
   	\bfseries
     \MakeUppercase\shmtu@value@entitle \vskip 2ex
@@ -125,6 +121,7 @@
       \MakeUppercase\shmtu@label@abstractEng
     \endgroup
   }
+  \addcontentsline{toc}{chapter}{\texorpdfstring {\MakeUppercase{\shmtu@label@abstractEng}}{\shmtu@label@abstractEng}}
   \vskip 2ex
   \@mkboth{\shmtu@label@abstractEng}%
           {\shmtu@label@abstractEng}%
