@@ -34,7 +34,7 @@
 	\shmtu@label@schoolChi\shmtu@label@degreetypeChi 学位论文
 }
 
-% 纸张设置
+% 纸张设置，根据《上海海事大学学位论文与摘要的统一要求》进行设置
 \geometry{%
   paper      = a4paper,
   top        = 2.7cm,
@@ -127,6 +127,7 @@
           {\shmtu@label@abstractEng}%
   \zihao{-4}
 }{%
+  \vskip 1ex
   \noindent\hfill\shmtu@value@enauthor(\shmtu@value@enmajor)
   \vskip 1ex
   \noindent\hfill Directed by \shmtu@value@ensupervisor
@@ -155,6 +156,7 @@
   \cleardoublepage
   \thispagestyle{shmtu@title}
   \begin{minipage}{.45\linewidth}
+  	\vskip -2mm  % 设置上边距为27-2=25mm
     \begin{flushleft}
       \includegraphics[width=0.45\textwidth]{images/shmtu-badge}
     \end{flushleft}
@@ -162,6 +164,7 @@
   \hfill
   \begin{minipage}{.45\linewidth}
     \begin{flushright}
+      \vskip 3mm  % 设置上边距为27+3=30mm
       \begingroup
       \linespread{1.2}\selectfont\zihao{4}\kaishu
       \begin{tabularx}{\textwidth}
@@ -175,16 +178,17 @@
     \end{flushright} 
   \end{minipage}
   \begin{center}
+  	% TODO：重写vskip直至与学校要求保持一致
     \vspace*{60bp}
-    \includegraphics[height=48bp]{images/shmtu-name}
+    \includegraphics{images/shmtu-name}
     \vskip \stretch{0.4}
     {\zihao{2}SHANGHAI MARITIME UNIVERSITY}
     \vskip \stretch{0.4}
     {\zihao{1}\ziju{0.65}\bfseries\lishu \shmtu@label@degreetypeChi 学位论文}
     \vskip \stretch{0.4}
     {\zihao{-2}\MakeUppercase{\shmtu@label@degreetypeEng}'S THESIS}
-    \vskip \stretch{5}
     
+    \vskip \stretch{5}
     \begingroup
       \makebox[0.85\textwidth][c]{
       	\linespread{1.2}\selectfont\zihao{2}\bfseries\kaishu

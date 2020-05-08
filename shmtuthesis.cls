@@ -47,6 +47,7 @@
 }
 \ProcessKeyvalOptions*
 
+% 创建相应的逻辑变量并进行校验
 \newcommand{\shmtu@validate@key}[1]{%
   \@ifundefined{shmtu@#1@\csname shmtu@#1\endcsname true}{%
     \ClassError{shmtuthesis}{Invalid value '\csname shmtu@#1\endcsname'}{}%
@@ -81,9 +82,13 @@
 \ifshmtu@language@english
   \PassOptionsToClass{scheme=plain}{ctexbook}
 \fi
+
 \PassOptionsToPackage{no-math}{fontspec}
 \PassOptionsToPackage{math-style=\shmtu@mathstyle}{unicode-math}
+
 \LoadClass[a4paper, zihao=\shmtu@zihao, linespread=1.3, UTF8]{ctexbook}
+
+% 根据学位导入相应的.ltx文件，可在此处导入制定一的样式文件
 \ifshmtu@degree@master
   \AtEndOfClass{\input{shmtuthesis-graduate.ltx}}
 \fi
@@ -117,12 +122,13 @@
 \includepdfset{fitpaper=true}
 \RequirePackage{hyperref}
 
+% 定义全局中英文术语变量
 \newcommand{\shmtu@def@term}[1]{%
   \expandafter\gdef\csname #1\endcsname##1{%
     \expandafter\gdef\csname shmtu@value@#1\endcsname{##1}}
   \csname #1\endcsname{}
   \define@key{shmtuvalue}{#1}{\csname #1\endcsname{##1}}}
-\shmtu@def@term{degreecategory}
+\shmtu@def@term{degreecategory} 
 \shmtu@def@term{title}
 \shmtu@def@term{entitle}
 \shmtu@def@term{author}
@@ -137,6 +143,8 @@
 \shmtu@def@term{enkeywords}
 
 \NewDocumentCommand\shmtuSetInfo{}{\setkeys{shmtuvalue}}
+
+% 定义全局标签变量
 \newcommand{\shmtu@def@label}[2]{%
   \expandafter\gdef\csname shmtu@label@#1\endcsname{#2}
   \define@key{shmtulabel}{#1}{%
@@ -332,6 +340,8 @@
 \setcounter{secnumdepth}{3}
 
 % 目录样式设置
+\let\origaddvspace\addvspace
+\renewcommand{\addvspace}[1]{}  % 取消章与章之间目录的间隔
 \setcounter{tocdepth}{2}
 \renewcommand{\cftdotsep}{1} % 目录中间点的间隔因子，越小越密
 \titlecontents{chapter}% <section-type>
