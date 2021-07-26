@@ -31,7 +31,7 @@
 \shmtu@def@label{finisheddate}{完成日期}
 \def\shmtu@label@thesistype{}
 \shmtu@def@label{subject}{%
-	\shmtu@label@schoolChi\shmtu@label@degreetypeChi 学位论文
+    \shmtu@label@schoolChi\shmtu@label@degreetypeChi 学位论文
 }
 
 % 纸张设置，根据《上海海事大学学位论文与摘要的统一要求》进行设置
@@ -43,6 +43,15 @@
   right      = 2.5cm,
   headheight = 1.0cm,
   headsep    = 0.5cm,
+}
+
+% 英文字体检测
+\IfFontExistsTF{Arial}{
+  % Windows 特有字体
+  \shmtu@def@label{mainfont}{Arial}
+}{
+  % 大部分 Linux 使用此字体代替 Arial。对 Arch/Gentoo/NixOS 等系统需要手动安装。
+  \shmtu@def@label{mainfont}{Liberation Sans}
 }
 
 % 设置行距（默认：1.5倍行距）
@@ -115,8 +124,8 @@
 \NewDocumentEnvironment{enabstract}{}{%
   \cleardoublepage
   \chapter*{%
-  	\bfseries
-    \MakeUppercase\shmtu@value@entitle \vskip 2ex
+    \bfseries
+    \setmainfont{\shmtu@label@mainfont} \textbf{\shmtu@value@entitle} \vskip 2ex
     \begingroup
       \MakeUppercase\shmtu@label@abstractEng
     \endgroup
@@ -125,7 +134,7 @@
   \vskip 2ex
   \@mkboth{\shmtu@label@abstractEng}%
           {\shmtu@label@abstractEng}%
-  \zihao{-4}
+  \zihao{5}\setmainfont{\shmtu@label@mainfont}
 }{%
   \vskip 1ex
   \noindent\hfill\shmtu@value@enauthor(\shmtu@value@enmajor)
@@ -156,7 +165,7 @@
   \cleardoublepage
   \thispagestyle{shmtu@title}
   \begin{minipage}{.45\linewidth}
-  	\vskip -2mm  % 设置上边距为27-2=25mm
+    \vskip -2mm  % 设置上边距为27-2=25mm
     \begin{flushleft}
       \includegraphics[width=0.45\textwidth]{images/shmtu-badge}
     \end{flushleft}
@@ -169,16 +178,16 @@
       \linespread{1.2}\selectfont\zihao{4}\kaishu
       \begin{tabularx}{\textwidth}
           {>{\begin{CJKfilltwosides}[t]{4\ccwd}}r<{\end{CJKfilltwosides}：}
-	          >{\raggedright\arraybackslash}X}
-	    学校代码 & 10254				  \\
-      	学号     & \shmtu@value@studentid \\
-      	密级     &						  \\
-	  \end{tabularx}
-	  \endgroup
+              >{\raggedright\arraybackslash}X}
+        学校代码 & 10254                  \\
+        学号     & \shmtu@value@studentid \\
+        密级     &                        \\
+      \end{tabularx}
+      \endgroup
     \end{flushright} 
   \end{minipage}
   \begin{center}
-  	% TODO：重写vskip直至与学校要求保持一致
+    % TODO：重写vskip直至与学校要求保持一致
     \vspace*{60bp}
     \includegraphics{images/shmtu-name}
     \vskip \stretch{0.4}
@@ -191,16 +200,16 @@
     \vskip \stretch{5}
     \begingroup
       \makebox[0.85\textwidth][c]{
-      	\linespread{1.2}\selectfont\zihao{2}\bfseries\kaishu
-	    \begin{tabularx}{0.85\textwidth}
+        \linespread{1.2}\selectfont\zihao{2}\bfseries\kaishu
+        \begin{tabularx}{0.85\textwidth}
           {r<{：}>{\centering\arraybackslash}X}
-	      \shmtu@label@degreecategory & \shmtu@value@degreecategory \\ \cline{2-2}
-	      \shmtu@label@thesistitle	  & \shmtu@value@title 	      \\ \cline{2-2}
-	      \shmtu@label@major          & \shmtu@value@major   		  \\ \cline{2-2}
-    	  \shmtu@label@author         & \shmtu@value@author         \\ \cline{2-2}
-	      \shmtu@label@supervisor     & \shmtu@value@supervisor     \\ \cline{2-2}
-    	  \shmtu@label@finisheddate   & \shmtu@value@finisheddate   \\ \cline{2-2}
-	    \end{tabularx}
+          \shmtu@label@degreecategory & \shmtu@value@degreecategory \\ \cline{2-2}
+          \shmtu@label@thesistitle    & \shmtu@value@title        \\ \cline{2-2}
+          \shmtu@label@major          & \shmtu@value@major            \\ \cline{2-2}
+          \shmtu@label@author         & \shmtu@value@author         \\ \cline{2-2}
+          \shmtu@label@supervisor     & \shmtu@value@supervisor     \\ \cline{2-2}
+          \shmtu@label@finisheddate   & \shmtu@value@finisheddate   \\ \cline{2-2}
+        \end{tabularx}
       }
     \endgroup
   \end{center}
