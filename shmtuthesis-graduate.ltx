@@ -166,8 +166,9 @@
   \thispagestyle{shmtu@title}
   \begin{minipage}{.45\linewidth}
     \vskip -2mm  % 设置上边距为27-2=25mm
+    \hspace{-1cm}
     \begin{flushleft}
-      \includegraphics[width=0.45\textwidth]{images/shmtu-badge}
+      \includegraphics[width=0.4\textwidth]{images/shmtu-badge}
     \end{flushleft}
   \end{minipage}
   \hfill
@@ -183,21 +184,18 @@
         学号     & \shmtu@value@studentid \\
         密级     &                        \\
       \end{tabularx}
+      \hspace{-1cm}
       \endgroup
     \end{flushright} 
   \end{minipage}
   \begin{center}
-    % TODO：重写vskip直至与学校要求保持一致
-    \vspace*{60bp}
-    \includegraphics{images/shmtu-name}
-    \vskip \stretch{0.4}
-    {\zihao{2}SHANGHAI MARITIME UNIVERSITY}
-    \vskip \stretch{0.4}
-    {\zihao{1}\ziju{0.65}\bfseries\lishu \shmtu@label@degreetypeChi 学位论文}
-    \vskip \stretch{0.4}
-    {\zihao{-2}\MakeUppercase{\shmtu@label@degreetypeEng}'S THESIS}
+    \vspace*{86bp}
+    \includegraphics{images/shmtu-name}\vspace{-0.5em}\\
+    {\zihao{2}SHANGHAI MARITIME UNIVERSITY}\\
+    \vspace{0.5em}{\zihao{1}\ziju{0.65}\bfseries\lishu \shmtu@label@degreetypeChi 学位论文}\\
+    \vspace{0.5em}{\zihao{-2}\MakeUppercase{\shmtu@label@degreetypeEng}'S THESIS}\\
     
-    \vskip \stretch{5}
+    \vspace{7em}
     \begingroup
       \makebox[0.85\textwidth][c]{
         \linespread{1.2}\selectfont\zihao{2}\bfseries\kaishu
