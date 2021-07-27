@@ -34,6 +34,30 @@
     \shmtu@label@schoolChi\shmtu@label@degreetypeChi 学位论文
 }
 
+\ExplSyntaxOn
+\makeatletter
+\int_new:N\shmtu@@title@textindex
+\int_new:N\shmtu@@title@textindexend
+\int_new:N\shmtu@@title@textcount
+\NewDocumentCommand{\shmtu@@title@tablecontent}{}{
+  \int_set:Nn\shmtu@@title@textindex{1}
+  \int_set:Nn\shmtu@@title@textindexend{10}
+  \int_set:Nn\shmtu@@title@textcount{\str_count:N \shmtu@value@title}
+  \tl_clear:N \l_tmpa_tl
+  \int_do_while:nn {\shmtu@@title@textcount>\shmtu@@title@textindex} {%
+    \tl_put_right:Nx \l_tmpa_tl {
+      \exp_not:N {}
+      \exp_not:N &
+      \str_range:Nnn \shmtu@value@title \shmtu@@title@textindex \shmtu@@title@textindexend
+      \exp_not:n { \\ \cline{2-2} }
+    }
+    \int_add:Nn \shmtu@@title@textindex    {10}
+    \int_add:Nn \shmtu@@title@textindexend {10}
+  }
+  \l_tmpa_tl
+}
+\ExplSyntaxOff
+
 % 纸张设置，根据《上海海事大学学位论文与摘要的统一要求》进行设置
 \geometry{%
   paper      = a4paper,
@@ -166,7 +190,6 @@
   \thispagestyle{shmtu@title}
   \begin{minipage}{.45\linewidth}
     \vskip -2mm  % 设置上边距为27-2=25mm
-    \hspace{-1cm}
     \begin{flushleft}
       \includegraphics[width=0.4\textwidth]{images/shmtu-badge}
     \end{flushleft}
@@ -184,7 +207,6 @@
         学号     & \shmtu@value@studentid \\
         密级     &                        \\
       \end{tabularx}
-      \hspace{-1cm}
       \endgroup
     \end{flushright} 
   \end{minipage}
@@ -200,13 +222,13 @@
       \makebox[0.85\textwidth][c]{
         \linespread{1.2}\selectfont\zihao{2}\bfseries\kaishu
         \begin{tabularx}{0.85\textwidth}
-          {r<{：}>{\centering\arraybackslash}X}
-          \shmtu@label@degreecategory & \shmtu@value@degreecategory \\ \cline{2-2}
-          \shmtu@label@thesistitle    & \shmtu@value@title        \\ \cline{2-2}
-          \shmtu@label@major          & \shmtu@value@major            \\ \cline{2-2}
-          \shmtu@label@author         & \shmtu@value@author         \\ \cline{2-2}
-          \shmtu@label@supervisor     & \shmtu@value@supervisor     \\ \cline{2-2}
-          \shmtu@label@finisheddate   & \shmtu@value@finisheddate   \\ \cline{2-2}
+          {r<{}>{\centering\arraybackslash}X}
+          \shmtu@label@degreecategory{：} & \shmtu@value@degreecategory \\ \cline{2-2}
+          \shmtu@label@thesistitle{：}      \shmtu@@title@tablecontent 
+          \shmtu@label@major{：}          & \shmtu@value@major            \\ \cline{2-2}
+          \shmtu@label@author{：}         & \shmtu@value@author         \\ \cline{2-2}
+          \shmtu@label@supervisor{：}     & \shmtu@value@supervisor     \\ \cline{2-2}
+          \shmtu@label@finisheddate{：}   & \shmtu@value@finisheddate   \\ \cline{2-2}
         \end{tabularx}
       }
     \endgroup
