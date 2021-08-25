@@ -11,17 +11,17 @@
 图要有图注，并置于图的编号之后，图的编号和图注应置于图下方的居中位置。引用图应在图题右上角标出文献来源。当插图中组成部件由数字或字母等编号表示时，可在插图下方添加图注进行说明，如图~\ref{fig:shmtu-school-motto} 所示。一般来说，研究生图注与表注一般要求中英文对照。但是由于上海海事大学没有明确要求，故推荐仅使用中文图注。若有需要添加双语图注，用法如图~\ref{fig:shmtu-school-motto-2}所示。
 
 \begin{figure}[!htp]
-	\centering
-	\includegraphics[width=10cm]{shmtu-school-motto}
-	\caption{王伯群校长与吴淞商船校训}
-	\label{fig:shmtu-school-motto}
+    \centering
+    \includegraphics[width=10cm]{shmtu-school-motto}
+    \caption{王伯群校长与吴淞商船校训}
+    \label{fig:shmtu-school-motto}
 \end{figure}
 
 \begin{figure}[!htp]
-	\centering
-	\includegraphics[width=10cm]{shmtu-school-motto}
-	\bicaption{王伯群校长与吴淞商船校训}{President Wang Boqun and the school motto of WuSong Merchant Shipping}
-	\label{fig:shmtu-school-motto-2}
+    \centering
+    \includegraphics[width=10cm]{shmtu-school-motto}
+    \bicaption{王伯群校长与吴淞商船校训}{President Wang Boqun and the school motto of WuSong Merchant Shipping}
+    \label{fig:shmtu-school-motto-2}
 \end{figure}
 
 \subsection{多个图形}
@@ -41,15 +41,15 @@
 
 \begin{figure}[!htp]
   \begin{minipage}{0.48\textwidth}
-  	\centering
-    \includegraphics[height=1.5cm]{images/shmtu-badge.jpg}
+    \centering
+    \includegraphics[height=1.5cm]{images/shmtu-badge}
     \caption{并排第一个图}
     \label{fig:parallel-2-1}
   \end{minipage}
   \hfill
   \begin{minipage}{0.48\textwidth}
     \centering
-    \includegraphics[height=1.5cm]{images/shmtu-badge.jpg}
+    \includegraphics[height=1.5cm]{images/shmtu-badge}
     \caption{并排第二个图}
     \label{fig:parallel-2-2}
   \end{minipage}
@@ -59,18 +59,18 @@
 
 \begin{figure}[!htp]
   \subcaptionbox{上海海事大学校徽\label{fig:subcaptionbox-a}}%
-	[0.5\textwidth]{%
-	  \includegraphics[height=1.5cm]{images/shmtu-badge}
-	}
+    [0.5\textwidth]{%
+      \includegraphics[height=1.5cm]{images/shmtu-badge}
+    }
   \hfill
   \subcaptionbox{上海海事大学校名\label{fig:subcaptionbox-b}}%
     [0.5\textwidth]{%
-	  \includegraphics[width=0.5\textwidth]{images/shmtu-name}
-	}
+      \includegraphics[width=0.5\textwidth]{images/shmtu-name}
+    }
   \hfill
   \subcaptionbox{上海海事大学校徽\label{fig:subcaptionbox-c}}%
     [\textwidth]{%
-	  \includegraphics[height=1.5cm]{images/shmtu-badge}
+      \includegraphics[height=1.5cm]{images/shmtu-badge}
   }
   \caption{共用一个计数器的多个子图图注}
   \label{fig:subcaptionbox}
@@ -135,8 +135,6 @@
   \end{threeparttable}
 \end{table}
 
-\zhlipsum[1]
-
 如某个表需要转页接排，可以用 \pkg{longtable} 实现。接排时表注省略，表头应重复书写，并在右上方写“续表 xx”，如表~\ref{tab:grid_mlmmh}。
 
 \begin{longtable}[c]{c*{3}{r}}
@@ -147,7 +145,7 @@
   \multicolumn{1}{c}{Time (s)} & \multicolumn{1}{c}{Triple chosen} & \multicolumn{1}{c}{Other feasible triples} \\
   \midrule
   \endfirsthead
-	
+    
   % 续表
   \multicolumn{3}{r}{续表~\thetable} \\
   \toprule
