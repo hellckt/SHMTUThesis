@@ -95,7 +95,7 @@
 
 % 依赖库
 \RequirePackage{etoolbox}
-\RequirePackage{xparse}			% 提供\NewDocumentCommand命令
+\RequirePackage{xparse}         % 提供\NewDocumentCommand命令
 \RequirePackage{environ}
 \RequirePackage{geometry}
 \RequirePackage{fancyhdr}
@@ -210,7 +210,7 @@
   \shmtu@def@label{projects}%
                  {攻读\shmtu@label@degreetypeChi 学位期间参与的项目}
   \shmtu@def@label{awards}%
-  				 {攻读\shmtu@label@degreetypeChi 学位期间获奖情况}
+                 {攻读\shmtu@label@degreetypeChi 学位期间获奖情况}
 \fi
 
 \NewDocumentCommand\shmtuSetLabel{}{\setkeys{shmtulabel}}
@@ -438,7 +438,7 @@
   {\endgroup}
 \NewDocumentCommand{\shmtuSetFloatFontOn}{}{\shmtu@setfloatfonttrue}
 \NewDocumentCommand{\shmtuSetFloatFontOff}{}{\shmtu@setfloatfontfalse}
-\DeclareCaptionFont{shmtucaptionfont}{\zihao{5}\kaishu}
+\DeclareCaptionFont{shmtucaptionfont}{\zihao{5}\normalfont}
 \DeclareCaptionFont{shmtusubcaptionfont}{\zihao{5}\normalfont}
 \captionsetup{%
   format        = plain,
@@ -450,7 +450,7 @@
 \captionsetup[sub]{%
   format        = hang,
   labelformat   = parens,
-  labelsep		= space,
+  labelsep      = space,
   justification = justified,
   font          = shmtusubcaptionfont
 }
@@ -504,7 +504,7 @@
 % 原创性声明
 \NewDocumentCommand{\makeDeclareOriginality}{o}{%
   \ifshmtu@review
-  	\relax
+    \relax
   \else
     \pdfbookmark[0]{\shmtu@label@originality}{origtitle}
     \IfNoValueTF{#1}{%
@@ -525,7 +525,7 @@
 % 使用授权书
 \NewDocumentCommand{\makeDeclareAuthorization}{o}{%
   \ifshmtu@review
-  	\relax
+    \relax
   \else
     \pdfbookmark[0]{\shmtu@label@authorization}{authtitle}
     \IfNoValueTF{#1}{%
@@ -562,7 +562,7 @@
   \Collect@Body\shmtu@acknowledgements
 }{%
   \ifshmtu@review
-  	\relax
+    \relax
   \else
     \cleardoublepage
     \chapter*{\shmtu@label@acknowledgements}
@@ -603,7 +603,7 @@
   \Collect@Body\shmtu@publications
 }{%
   \ifshmtu@review
-  	\relax
+    \relax
   \else
     \begin{shmtu@bibliolist}{#1}{\shmtu@label@publications}
       \shmtu@publications@body
@@ -628,7 +628,7 @@
   \Collect@Body\shmtu@projects
 }{%
   \ifshmtu@review
-  	\relax
+    \relax
   \else
     \begin{shmtu@bibliolist}{#1}{\shmtu@label@projects}
       \shmtu@projects@body
@@ -653,7 +653,7 @@
   \Collect@Body\shmtu@patents
 }{%
   \ifshmtu@review
-  	\relax
+    \relax
   \else
     \begin{shmtu@bibliolist}{#1}{\shmtu@label@patents}
       \shmtu@patents@body
@@ -678,7 +678,7 @@
   \Collect@Body\shmtu@awards
 }{%
   \ifshmtu@review
-  	\relax
+    \relax
   \else
     \begin{shmtu@bibliolist}{#1}{\shmtu@label@awards}
       \shmtu@awards@body
@@ -923,8 +923,8 @@
   \renewcommand{\listofalgorithms}{%
     \cleardoublepage%
     \makeatletter
-		\renewcommand{\@dotsep}{\cftdotsep}
-	\makeatother
+        \renewcommand{\@dotsep}{\cftdotsep}
+    \makeatother
     \chapter*{\listalgorithmcfname}%
     \addcontentsline{toc}{chapter}{\listalgorithmcfname}
     \@mkboth{\listalgorithmcfname}{\listalgorithmcfname}%
@@ -961,8 +961,8 @@
   \renewcommand{\listofalgorithms}{%
     \cleardoublepage%
     \makeatletter
-	\renewcommand{\@dotsep}{\cftdotsep}
-	\makeatother
+    \renewcommand{\@dotsep}{\cftdotsep}
+    \makeatother
     \chapter*{\listalgorithmname}%
     \addcontentsline{toc}{chapter}{\listalgorithmname}
     \@mkboth{\listalgorithmname}{\listalgorithmname}%
