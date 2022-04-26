@@ -153,7 +153,7 @@
 \shmtu@def@label{schoolEng}{Shanghai Maritime University}
 \shmtu@def@label{originalityChi}{论文独创性声明}
 \shmtu@def@label{originalityEng}{Declaration of Originality}
-\shmtu@def@label{authorizationChi}{论文使用授权声明}
+\shmtu@def@label{authorizationChi}{学位论文版权使用授权书}
 \shmtu@def@label{authorizationEng}{Declaration of Authorization}
 \shmtu@def@label{origtitle}{\shmtu@label@originalityChi}
 \shmtu@def@label{authtitle}{\shmtu@label@authorizationChi}
@@ -163,10 +163,16 @@
   已经发表或撰写过的研究成果。其他同志对本研究的启发和所做的贡献
   均已在论文中作了明确的声明并表示了感谢。}
 \shmtu@def@label{authbody}{%
-  本人同意上海海事大学有关保留、使用学位论文的规定，即：学校
-  有权保留送交论文复印件，允许论文被查阅和借阅;学校可以上网公布
-  论文的全部和部分内容，可以采用影印、缩印或者其他复制手段保存论
-  文。保密的论文在解密后遵守此规定。}
+本学位论文作者完全了解学校有关保留、使用学位论文的规定，即：学校有权保留并向国家
+有关部门或机构送交论文的复印件和电子版，允许论文被查阅和借阅。本人授权上海海事大
+学可以将本学位论文的全部或部分内容编入有关数据库进行检索，可以采用影印、缩印或扫
+描等复制手段保存和汇编本学位论文。
+
+本学位论文属于（请在以下相应方框内打“\checkmark”）
+
+$\square$保密，在\phantom{xx}年解密后适用本使用授权书。
+
+$\square$不保密。} 
 \shmtu@def@label{abstractChi}{摘\quad 要}
 \shmtu@def@label{abstractEng}{Abstract}
 \shmtu@def@label{keywordsChi}{关键词：}
@@ -494,10 +500,10 @@
 % 签名框
 \newcommand{\shmtu@signbox}[2][作者]{%
   \makebox[\textwidth][r]{%
-    #1 签名：\underline{\hbox to 4em{}}%
+    #1 签名：\underline{\hbox to 5em{}}%
     \ifthenelse{\equal{#2}{作者}}%
-      {}{#2 签名：\underline{\hbox to 4em{}}}%
-    日期：\underline{\hbox to 4em{}}%
+      {}{#2 签名：\underline{\hbox to 5em{}}}%
+    日期：\underline{\hbox to 6em{}}%
   }
 }
 
@@ -510,10 +516,11 @@
     \IfNoValueTF{#1}{%
       \thispagestyle{empty}
       \chapter*{\normalfont\zihao{3}\songti\shmtu@label@origtitle}
+      \vspace{16pt}
       \begingroup
         \zihao{4}
         \shmtu@label@origbody
-        \vskip 10ex
+
         \noindent
         \shmtu@signbox{作者}
       \endgroup
@@ -532,12 +539,11 @@
       \thispagestyle{empty}
       \vskip 16ex
       {\let\clearpage\relax\par\chapter*{\normalfont\zihao{3}\songti\shmtu@label@authtitle}}
+      \vspace{16pt}
       \begingroup
         \zihao{4}
         \shmtu@label@authbody
-        %\vskip 1ex
-        %\shmtu@authconf
-        \vskip 10ex
+
         \noindent
         \shmtu@signbox{导师}
       \endgroup
