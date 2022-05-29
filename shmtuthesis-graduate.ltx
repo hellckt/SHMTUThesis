@@ -17,7 +17,7 @@
 
 \ProvidesFile{shmtuthesis-graduate.ltx}
   [2020/01/22 0.0.1 Shanghai Maritime University Thesis Template]
-  
+
 \ifshmtu@degree@master
   \shmtu@def@label{degreetypeChi}{硕士}
   \shmtu@def@label{degreetypeEng}{Master}
@@ -31,8 +31,32 @@
 \shmtu@def@label{finisheddate}{完成日期}
 \def\shmtu@label@thesistype{}
 \shmtu@def@label{subject}{%
-	\shmtu@label@schoolChi\shmtu@label@degreetypeChi 学位论文
+    \shmtu@label@schoolChi\shmtu@label@degreetypeChi 学位论文
 }
+
+\ExplSyntaxOn
+\makeatletter
+\int_new:N\shmtu@@title@textindex
+\int_new:N\shmtu@@title@textindexend
+\int_new:N\shmtu@@title@textcount
+\NewDocumentCommand{\shmtu@@title@tablecontent}{}{
+  \int_set:Nn\shmtu@@title@textindex{1}
+  \int_set:Nn\shmtu@@title@textindexend{10}
+  \int_set:Nn\shmtu@@title@textcount{\str_count:N \shmtu@value@title}
+  \tl_clear:N \l_tmpa_tl
+  \int_do_while:nn {\shmtu@@title@textcount>\shmtu@@title@textindex} {%
+    \tl_put_right:Nx \l_tmpa_tl {
+      \exp_not:N {}
+      \exp_not:N &
+      \str_range:Nnn \shmtu@value@title \shmtu@@title@textindex \shmtu@@title@textindexend
+      \exp_not:n { \\ \cline{2-2} }
+    }
+    \int_add:Nn \shmtu@@title@textindex    {10}
+    \int_add:Nn \shmtu@@title@textindexend {10}
+  }
+  \l_tmpa_tl
+}
+\ExplSyntaxOff
 
 % 纸张设置，根据《上海海事大学学位论文与摘要的统一要求》进行设置
 \geometry{%
@@ -43,6 +67,15 @@
   right      = 2.5cm,
   headheight = 1.0cm,
   headsep    = 0.5cm,
+}
+
+% 英文字体检测
+\IfFontExistsTF{Arial}{
+  % Windows 特有字体
+  \shmtu@def@label{mainfont}{Arial}
+}{
+  % 大部分 Linux 使用此字体代替 Arial。对 Arch/Gentoo/NixOS 等系统需要手动安装。
+  \shmtu@def@label{mainfont}{Liberation Sans}
 }
 
 % 设置行距（默认：1.5倍行距）
@@ -115,8 +148,8 @@
 \NewDocumentEnvironment{enabstract}{}{%
   \cleardoublepage
   \chapter*{%
-  	\bfseries
-    \MakeUppercase\shmtu@value@entitle \vskip 2ex
+    \bfseries
+    \setmainfont{\shmtu@label@mainfont} \textbf{\shmtu@value@entitle} \vskip 2ex
     \begingroup
       \MakeUppercase\shmtu@label@abstractEng
     \endgroup
@@ -125,12 +158,12 @@
   \vskip 2ex
   \@mkboth{\shmtu@label@abstractEng}%
           {\shmtu@label@abstractEng}%
-  \zihao{-4}
+  \zihao{5}\setmainfont{\shmtu@label@mainfont}
 }{%
   \vskip 1ex
   \noindent\hfill\shmtu@value@enauthor(\shmtu@value@enmajor)
   \vskip 1ex
-  \noindent\hfill Directed by \shmtu@value@ensupervisor
+  \noindent\hfill Supervised by \shmtu@value@ensupervisor
   \vskip 6ex \noindent
   \begingroup
     \bfseries\MakeUppercase
@@ -156,9 +189,9 @@
   \cleardoublepage
   \thispagestyle{shmtu@title}
   \begin{minipage}{.45\linewidth}
-  	\vskip -2mm  % 设置上边距为27-2=25mm
+    \vskip -2mm  % 设置上边距为27-2=25mm
     \begin{flushleft}
-      \includegraphics[width=0.45\textwidth]{images/shmtu-badge}
+      \includegraphics[width=0.4\textwidth]{images/shmtu-badge}
     \end{flushleft}
   \end{minipage}
   \hfill
@@ -169,38 +202,34 @@
       \linespread{1.2}\selectfont\zihao{4}\kaishu
       \begin{tabularx}{\textwidth}
           {>{\begin{CJKfilltwosides}[t]{4\ccwd}}r<{\end{CJKfilltwosides}：}
-	          >{\raggedright\arraybackslash}X}
-	    学校代码 & 10254				  \\
-      	学号     & \shmtu@value@studentid \\
-      	密级     &						  \\
-	  \end{tabularx}
-	  \endgroup
-    \end{flushright} 
+              >{\raggedright\arraybackslash}X}
+        学校代码 & 10254                  \\
+        学号     & \shmtu@value@studentid \\
+        密级     &                        \\
+      \end{tabularx}
+      \endgroup
+    \end{flushright}
   \end{minipage}
   \begin{center}
-  	% TODO：重写vskip直至与学校要求保持一致
-    \vspace*{60bp}
-    \includegraphics{images/shmtu-name}
-    \vskip \stretch{0.4}
-    {\zihao{2}SHANGHAI MARITIME UNIVERSITY}
-    \vskip \stretch{0.4}
-    {\zihao{1}\ziju{0.65}\bfseries\lishu \shmtu@label@degreetypeChi 学位论文}
-    \vskip \stretch{0.4}
-    {\zihao{-2}\MakeUppercase{\shmtu@label@degreetypeEng}'S THESIS}
-    
-    \vskip \stretch{5}
+    \vspace*{86bp}
+    \includegraphics{images/shmtu-name}\vspace{-0.5em}\\
+    {\zihao{2}SHANGHAI MARITIME UNIVERSITY}\\
+    \vspace{0.5em}{\zihao{1}\ziju{0.65}\bfseries\lishu \shmtu@label@degreetypeChi 学位论文}\\
+    \vspace{0.5em}{\zihao{-2}\MakeUppercase{\shmtu@label@degreetypeEng}'S THESIS}\\
+
+    \vspace{7em}
     \begingroup
       \makebox[0.85\textwidth][c]{
-      	\linespread{1.2}\selectfont\zihao{2}\bfseries\kaishu
-	    \begin{tabularx}{0.85\textwidth}
-          {r<{：}>{\centering\arraybackslash}X}
-	      \shmtu@label@degreecategory & \shmtu@value@degreecategory \\ \cline{2-2}
-	      \shmtu@label@thesistitle	  & \shmtu@value@title 	      \\ \cline{2-2}
-	      \shmtu@label@major          & \shmtu@value@major   		  \\ \cline{2-2}
-    	  \shmtu@label@author         & \shmtu@value@author         \\ \cline{2-2}
-	      \shmtu@label@supervisor     & \shmtu@value@supervisor     \\ \cline{2-2}
-    	  \shmtu@label@finisheddate   & \shmtu@value@finisheddate   \\ \cline{2-2}
-	    \end{tabularx}
+        \linespread{1.2}\selectfont\zihao{2}\bfseries\kaishu
+        \begin{tabularx}{0.85\textwidth}
+          {r<{}>{\centering\arraybackslash}X}
+          \shmtu@label@degreecategory{：} & \shmtu@value@degreecategory \\ \cline{2-2}
+          \shmtu@label@thesistitle{：}      \shmtu@@title@tablecontent
+          \shmtu@label@major{：}          & \shmtu@value@major            \\ \cline{2-2}
+          \shmtu@label@author{：}         & \shmtu@value@author         \\ \cline{2-2}
+          \shmtu@label@supervisor{：}     & \shmtu@value@supervisor     \\ \cline{2-2}
+          \shmtu@label@finisheddate{：}   & \shmtu@value@finisheddate   \\ \cline{2-2}
+        \end{tabularx}
       }
     \endgroup
   \end{center}

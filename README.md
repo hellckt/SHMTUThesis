@@ -22,7 +22,7 @@
 >
 > 设置完毕后进行编译即可得到PDF文件。
 
-&emsp;&emsp; 注意：如果编译过程中出现XITS、LISU和YOUYUAN字体缺失错误，请在本项目的`fonts`目录中安装字体。
+&emsp;&emsp; 注意：如果编译过程中出现XITS、LISU和YOUYUAN字体缺失错误，请在本项目的`fonts`目录中安装字体。部分字体根据系统进适配，如Windows下使用Arial，而Linux下使用Liberation Sans，请确保这些字体已经安装。
 
 ### macOS用户
 
