@@ -113,7 +113,7 @@
 \RequirePackage{caption}
 \RequirePackage[list=off]{bicaption}
 \RequirePackage{subcaption}
-\RequirePackage[backend=biber, style=\shmtu@bibstyle]{biblatex}
+\RequirePackage[gbpub=false,doi=false,backend=biber,style=\shmtu@bibstyle,gbnamefmt=lowercase]{biblatex}
 \RequirePackage{titletoc}
 \RequirePackage[titles]{tocloft}
 \RequirePackage[inline]{enumitem}
